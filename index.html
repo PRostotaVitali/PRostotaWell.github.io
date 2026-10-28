@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Graypels Production — Stories That Cross Continents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+    .board-card img {
+    display: block !important;
+    float: none !important;
+    margin-bottom: 15px;
+    max-width: 150px; 
+    }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      ul,
+      ol,
+      figure,
+      blockquote {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      ol {
+        list-style: none;
+      }
+      img,
+      video,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      :root {
+        --color-bg: #101211;
+        --color-text: #f3f0e8;
+        --color-accent: #6fecb8;
+        --color-surface: #171a18;
+        --color-border: #39433d;
+        --color-gold: #c8a76b;
+        --color-muted: #a9ada7;
+        --space-xs: 0.5rem;
+        --space-sm: 0.85rem;
+        --space-md: 1.4rem;
+        --space-lg: 2.5rem;
+        --space-xl: clamp(4rem, 9vw, 8rem);
+        --radius: 8px;
+        --font-body: "Inter", sans-serif;
+        --font-heading: "Inter", sans-serif;
+        --z-nav: 10;
+      }
+      html,
+      body {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow-x: hidden;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a,
+      button {
+        min-height: 44px;
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 4px;
+      }
+      .container {
+        width: 100%;
+        max-width: 1280px;
+        margin-inline: auto;
+        padding-inline: clamp(1.1rem, 5vw, 2rem);
+      }
+      .wide-container {
+        width: 100%;
+        max-width: 1440px;
+        margin-inline: auto;
+        padding-inline: clamp(1.1rem, 5vw, 3rem);
+      }
+      .site-header {
+        border-bottom: 1px solid var(--color-border);
+        position: relative;
+        z-index: var(--z-nav);
+        background: rgba(16, 18, 17, 0.94);
+      }
+      .nav {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-md);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.82rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .brand-mark {
+        color: var(--color-gold);
+        font-size: 1.25rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: clamp(1rem, 3vw, 2.5rem);
+        color: var(--color-muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+      .nav-links a:hover {
+        color: var(--color-accent);
+      }
+      .hero {
+        min-height: 76vh;
+        display: grid;
+        align-items: center;
+        position: relative;
+        border-bottom: 1px solid var(--color-border);
+        background:
+          radial-gradient(ellipse at 82% 25%, rgba(200, 167, 107, 0.13), transparent 38%),
+          linear-gradient(115deg, var(--color-bg), #1a1b17);
+      }
+      .hero-inner {
+        padding-top: 10px; /* Уменьшаем отступ сверху */
+        padding-bottom: var(--space-xl);
+      }
+      .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.73rem;
+    font-weight: 600;
+    margin-top: 2rem;       /* <-- ДОБАВЬТЕ ЭТУ СТРОКУ (сдвинет надпись вниз от линии) */
+    margin-bottom: 0.5rem;   /* <-- ИЗМЕНИТЕ ЭТУ СТРОКУ (прижмет надпись ближе к Board of directors) */
+    }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        letter-spacing: -0.045em;
+        line-height: 1.08;
+      }
+      h1 {
+        max-width: 860px;
+        font-size: clamp(2rem, 5vw, 2.5rem);
+      }
+      h2 {
+      font-size: 32px !important;
+      }    
+      .hero-copy {
+        max-width: 720px;
+        color: #d1d0ca;
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        line-height: 1.65;
+        margin-top: var(--space-lg);
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        margin-top: var(--space-lg);
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.15rem;
+        border: 1px solid var(--color-accent);
+        border-radius: var(--radius);
+        color: var(--color-bg);
+        background: var(--color-accent);
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          background 0.2s;
+      }
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 22px rgba(111, 236, 184, 0.24);
+      }
+      .button-outline {
+        background: transparent;
+        color: var(--color-gold);
+        border-color: var(--color-gold);
+      }
+      .button-outline:hover {
+        background: var(--color-gold);
+        color: var(--color-bg);
+        box-shadow: 0 0 22px rgba(200, 167, 107, 0.2);
+      }
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin-top: var(--space-xl);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .pillar {
+        padding: var(--space-lg) var(--space-md);
+        border-right: 1px solid var(--color-border);
+      }
+      .pillar:last-child {
+        border-right: 0;
+      }
+      .pillar-number {
+        color: var(--color-accent);
+        font-size: 0.75rem;
+        letter-spacing: 0.13em;
+      }
+      .pillar h3 {
+        font-size: 1.25rem;
+        margin: 0.8rem 0 0.55rem;
+        letter-spacing: -0.02em;
+      }
+      .pillar p,
+      .section-intro,
+      .project-copy,
+      .board-card p {
+        color: var(--color-muted);
+        font-size: 0.96rem;
+      }
+      section {
+        padding-block: 20;
+      }
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: var(--space-lg);
+        margin-bottom: var(--space-lg);
+      }
+      h2 {
+        font-size: clamp(2rem, 4vw, 3.8rem);
+      }
+      .section-intro {
+        max-width: 40ch;
+      }
+      .pillar-number, .pillar h3, .pillar p {
+    display: none;
+      }
+      .featured {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: clamp(2rem, 6vw, 5rem);
+        align-items: center;
+      }
+      .media-frame {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border: 1px solid var(--color-border);
+        background: linear-gradient(135deg, #30291e, #141816 62%, #28352c);
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+      .media-frame::after {
+        content: "IN PRODUCTION";
+        color: rgba(243, 240, 232, 0.46);
+        letter-spacing: 0.18em;
+        font-size: 0.7rem;
+      }
+      .featured-content {
+        min-width: 0;
+      }
+      .laurels {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-bottom: var(--space-md);
+      }
+      .laurel {
+        border: 1px solid var(--color-gold);
+        color: var(--color-gold);
+        padding: 0.4rem 0.65rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-radius: var(--radius);
+      }
+      h3 {
+        font-size: clamp(1.45rem, 3vw, 2.3rem);
+      }
+      .project-copy {
+        margin-top: var(--space-md);
+        line-height: 1.75;
+      }
+      .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        margin-top: var(--space-lg);
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+        margin-top: var(--space-xl);
+      }
+      .project-card,
+      .board-card,
+      .support-panel {
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .project-card .media-frame {
+        border: 0;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .project-card-body {
+        padding: var(--space-lg);
+      }
+      .project-card h3 {
+        font-size: 1.6rem;
+      }
+      .project-card p {
+        margin-top: var(--space-sm);
+      }
+      .project-card .button {
+        margin-top: var(--space-md);
+      }
+      .board-section {
+        background: #131615;
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .board-section h2 {
+    font-size: 2.5rem;
+    }
+      .board-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+      }
+      .board-card {
+        padding: var(--space-lg);
+      }
+      .board-role {
+        color: var(--color-gold);
+        font-size: 0.73rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+      }
+      .board-card p {
+        margin-top: var(--space-md);
+        line-height: 1.75;
+      }
+      .support {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.75fr);
+        gap: clamp(2rem, 7vw, 7rem);
+        align-items: center;
+      }
+      .support-copy {
+        max-width: 62ch;
+      }
+      .support-copy p {
+        color: var(--color-muted);
+        margin-top: var(--space-md);
+        line-height: 1.75;
+      }
+      .support-panel {
+        padding: var(--space-lg);
+        border-color: var(--color-gold);
+      }
+      .support-panel h3 {
+        color: var(--color-gold);
+        font-size: 1.35rem;
+      }
+      .support-panel p {
+        color: var(--color-muted);
+        margin: 0.7rem 0 var(--space-md);
+      }
+      .support-links {
+        display: grid;
+        gap: 0.7rem;
+      }
+      .support-link {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        border-top: 1px solid var(--color-border);
+        padding-top: 0.8rem;
+        font-size: 0.88rem;
+      }
+      .support-link span:last-child {
+        color: var(--color-accent);
+      }
+      footer {
+        border-top: 1px solid var(--color-border);
+        padding-block: var(--space-lg);
+        color: var(--color-muted);
+        font-size: 0.8rem;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+      }
+      .footer-inner a:hover {
+        color: var(--color-accent);
+      }
+      @media (max-width: 800px) {
+        .nav {
+          align-items: flex-start;
+          padding-block: 1rem;
+          flex-direction: column;
+        }
+        .nav-links {
+          flex-wrap: wrap;
+          gap: 0.6rem 1rem;
+        }
+        .pillars,
+        .featured,
+        .board-grid,
+        .support {
+          grid-template-columns: 1fr;
+        }
+        .pillar {
+          border-right: 0;
+          border-bottom: 1px solid var(--color-border);
+        }
+        .pillar:last-child {
+          border-bottom: 0;
+        }
+        .section-heading {
+          display: block;
+        }
+        .section-intro {
+          margin-top: var(--space-md);
+        }
+      }
+      @media (max-width: 560px) {
+        .hero {
+          min-height: auto;
+        }
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-actions,
+        .project-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .button {
+          width: 100%;
+        }
+        }
+      .brand {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+
+}
+.brand img {
+    filter: brightness(0) invert(1); /* Делает логотип чисто белым */
+    opacity: 0.9; /* Делает его слегка мягче для глаз */
+    transition: all 0.3s ease; /* Плавный эффект при наведении */
+}
+
+.brand:hover img {
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--color-gold)); /* Золотое свечение */
+    opacity: 1;
+}
+.nav-links {
+    display: flex !important;
+    align-items: center !important; /* Выравнивает кнопки по центру шапки */
+    height: auto !important; /* Сбрасывает растягивание на всю высоту хедера */
+    gap: 8px !important; /* Делает аккуратные одинаковые отступы между кнопками */
+}
+.nav-links a {
+    color: #ffffff !important;
+    padding: 6px 16px !important; /* Уменьшаем высоту (6px) и делаем аккуратную ширину (16px) */
+    font-size: 13px !important; /* Слегка уменьшаем размер шрифта, чтобы он выглядел изящнее */
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em !important; /* Добавляем легкий красивый отступ между буквами */
+    border-radius: 4px; /* Аккуратное скругление углов */
+    transition: all 0.3s ease;
+    display: inline-flex !important; /* Выстраиваем в аккуратную линию */
+    align-items: center !important;
+    height: auto !important; /* Принудительно отменяем растягивание кнопок на всю высоту шапки */
+    line-height: 1 !important; /* Убираем лишние скрытые отступы у текста */
+    background-color: transparent; /* Изначально кнопки будут без грубого фона */
+}
+
+.nav-links a:hover {
+    background-color: var(--color-gold) !important;
+    color: #000000 !important;
+    border-color: var(--color-gold) !important;
+}
+     .hero-container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+   }
+
+.hero-text-side {
+    flex: 1.2;
+}
+
+.hero-text-side h1,
+.hero-text-side h2 {
+    font-size: 42px;
+    margin: 0;
+}
+
+.hero-image-side {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-side-img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    mix-blend-mode: screen;
+    margin-top: 0px;
+}
+
+.hero-actions-main {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+section:has(.hero-container-flex), 
+.hero-container-flex {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+@media (max-width: 768px) {
+    .hero-container-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-actions-main {
+        justify-content: center;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+    <div class="wide-container nav">
+        <a class="brand" href="#top" aria-label="Graypels Production home">
+            <img src="logo.png" alt="Logo" style="height: 32px; vertical-align: middle; margin-right: 10px;">
+            <span class="brand-mark">Graypels Production Inc.</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#mission">Mission</a>
+            <a href="#projects">Projects</a>
+            <a href="#impact">Impact</a>
+            <a href="#support">Support Us</a>
+            
+        </nav>
+    </div>
+</header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-container-flex">
+            
+            <!-- Левая колонка с текстом и кнопками -->
+            <div class="hero-text-side">
+                <p class="eyebrow">Independent cultural non-profit</p>
+                <h1 class="hero-title-main">Stories That Cross Continents Voices That Cut Through Stigma</h1>
+                <p class="hero-copy-main">
+                    We harness the power of film, original music, and visual storytelling to champion human rights, foster cultural memory, and build bridges between worlds.
+                </p>
+                <div class="hero-actions-main">
+                    <a class="button" href="#support">Support our mission</a>
+                    <a class="button button-outline" href="#projects">Explore our work</a>
+                </div>
+            </div>
+
+            <!-- Правая колонка с вашей фотографией -->
+            <div class="hero-image-side">
+                <img src="Winners.png" alt="Hero Image" class="hero-side-img">
+            </div>
+
+              </section>
+      <section id="projects">
+        <div class="container">
+          <div class="section-heading">
+    <div style="max-width: 680px;">
+        <p class="eyebrow">Selected work</p>
+        <h2 style="font-size: 2.2rem; line-height: 1.2; margin-bottom: 0.5rem;">Featured &amp; current projects</h2>
+        
+        <p class="section-intro">
+            Documentary projects that keep cultural memory alive and create room for meaningful change.
+        </p>
+    </div>
+</div>
+
+          <article class="featured">
+        <img class="media-frame" src="Mama_Vlada.jpg" alt="Mama Vlada film frame" style="width: 100%;">
+        <div class="featured-content">
+              <div class="laurels">
+                <span class="laurel">Silver Telly Award</span
+                ><span class="laurel">Official Selection</span>
+              </div>
+              <h3>Mama Vlada</h3>
+              <p class="project-copy">
+                An acclaimed feature documentary examining human rights, community resilience, and
+                LGBTQ+ advocacy through the lens of Manhattan’s cultural institution Russian Samovar
+                and its matriarch Vlada Von Shats.
+              </p>
+              <div class="project-actions">
+                <a class="button" href="https://youtu.be/B5BIJBBPUZM?si=xvUTflSDjURVakVw" target="_blank">Watch Trailer</a>
+                <a class="button button-outline" href="Mama_Vlada_Press_Kit.pdf">Download press / media kit (PDF)</a>
+              </div>
+            </div>
+          </article>
+          <article class="featured" style="margin-bottom: 50px; margin-top: 40px;">
+   <img class="media-frame" src="Unextinguished.png" alt="Mama Vlada film frame" style="width: 100%;">
+        <div class="featured-content">
+              <div class="laurels">
+              <span class="laurel">Official Selection</span>
+              </div>
+        <h3>Unextinguished</h3>
+        <p class="project-copy">
+            Unextinguished follows the courageous journeys of individuals who risked
+            everything to rescue and assist others during WWII, illuminating the profound
+            power of cross-cultural humanity amidst darkness. By pairing rare survivor
+            testimonials with powerful historical truth, the film honors those whose acts of
+            compassion left an indelible flame that time cannot put out.
+        </p>
+        <div class="project-actions">
+            <a class="button" href="https://youtu.be/KCovPVSavUo?si=NSuU_r3AHZ_xhMCv" target="_blank">Watch Trailer</a>
+            <a class="button button-outline" href="#">Download press / media kit (PDF)</a>
+        </div>
+    </div>
+</article>
+            <article class="featured" style="margin-bottom: 50px; margin-top: 40px;">
+              <div
+                class="media-frame"
+                role="img"
+                aria-label="Placeholder for Law in Your Heart documentary still"
+              ></div>
+              <div class="featured-content">
+    <h3>Law in Your Heart</h3>
+    <p class="project-copy">
+        Framed around the profound truth that true justice originates in human empathy rather than written decrees, the film weaves together intimate survivor testimonials and historical remembrance to honor acts of cross-cultural compassion that stood against total destruction.
+    </p>
+    <div class="project-actions">
+        <a class="button" href="#">Watch trailer</a>
+        <a class="button button-outline" href="#">Download press / media kit (PDF)</a>
+    </div>
+</div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="board-section" id="board">
+        <div class="container">
+         <div class="section-heading">
+    <div>
+        <p class="eyebrow">The people behind the work</p>
+        <h2>Board of directors</h2>
+        <p class="section-intro" style="max-width: 750px;">
+            A multidisciplinary team bringing artistic rigor, operational care, and lived commitment to every story.
+        </p>
+    </div>
+</div>
+          <div class="board-grid">
+            <article class="board-card">
+              <img src="ellina.png">
+              <h3>Ellina Graypel</h3>
+              <p class="board-role">President &amp; Executive Director</p>
+              <p>
+                Ellina Graypel is an award-winning New York–based filmmaker, composer, and Recording
+                Academy member whose multi-disciplinary practice sits at the intersection of music,
+                documentary cinema, and cross-cultural activism. Her work—including the Silver Telly
+                Award–winning <em>Mama Vlada</em> and the WWII testimonial documentary
+                <em>Unextinguished</em>—examines moral courage, historical truth, and the empathy
+                that binds people across political and geographical lines.
+              </p>
+            </article>
+            <article class="board-card">
+              <img src="katya.png">
+              <h3 style="white-space: nowrap;">Yekaterina Dmitrieva</h3>
+              <p class="board-role">Treasurer &amp; Strategic Advisor</p>
+              <p>
+                Yekaterina Dmitriyeva is a strategic advisor, business consultant, and operational
+                leader dedicated to helping ventures scale with clarity and compliance. She brings
+                strong fiscal governance and cross-industry experience to Graypels, empowering
+                non-profit cultural projects and community initiatives across live performance and
+                documentary film.
+              </p>
+            </article>
+            <article class="board-card">
+              <img src="vitali.png">
+              <h3>Vitali Prostota</h3>
+              <p class="board-role">Secretary &amp; Creative Media Director</p>
+              <p>
+                Vitali Prostota is an accomplished film editor, motion designer, and animator. He
+                oversees post-production, visual restoration, and media governance, and served as
+                lead editor and animator for the award-winning feature documentary
+                <em>Mama Vlada</em>. His practice blends narrative editing, motion graphics,
+                atmospheric effects, and AI-assisted reconstruction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="support">
+        <div class="container support">
+          <div class="support-copy">
+            <p class="eyebrow">A story needs witnesses</p>
+            <h2>Support our mission &amp; transparency</h2>
+            <p>
+              Your support helps independent films reach the audiences who need them, preserves
+              testimony for future generations, and gives cultural initiatives the practical
+              resources to grow. Whether you make a one-time contribution or join us monthly, you
+              become part of a living archive of empathy and action.
+            </p>
+            <p>
+              We welcome foundations, donors, and cultural partners who believe that art can move
+              public understanding forward. For partnership conversations, contact our team
+              directly.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#">Make a donation</a
+              ><a class="button button-outline" href="mailto:graypelsproduction@gmail.com"
+                >Email partnerships</a
+              >
+            </div>
+          </div>
+          <aside class="support-panel">
+            <h3>Ways to stand with us</h3>
+            <p>Choose the form of support that fits your relationship with the work.</p>
+            <div class="support-links">
+              <a class="support-link" href="#"><span>One-time donation</span><span>→</span></a
+              ><a class="support-link" href="#"><span>Monthly support</span><span>→</span></a
+              ><a class="support-link" href="#"><span>Press / media kit</span><span>PDF →</span></a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wide-container footer-inner">
+        <span>© 2025 Graypels Production Inc.</span><span>Film · Music · Human rights</span
+        ><a href="mailto:graypelsproduction@gmail.com"
+          >graypelsproduction@gmail.com</a
+        >
+      </div>
+    </footer>
+    <script>
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href");
+          const target = targetId && targetId !== "#" ? document.querySelector(targetId) : null;
+          if (target) {
+            event.preventDefault();
+            target.scrollIntoView({
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
