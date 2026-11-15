@@ -10,7 +10,6 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="favicon.png">
     <style>
     .board-card img {
     display: block !important;
@@ -284,29 +283,39 @@
         gap: clamp(2rem, 6vw, 5rem);
         align-items: center;
       }
-      .media-frame {
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
-        border: 1px solid var(--color-border);
-        background: linear-gradient(135deg, #30291e, #141816 62%, #28352c);
-        position: relative;
-        display: grid;
-        place-items: center;
-      }
-      .media-frame::after {
-    content: ""; 
-    display: block;
-    background-image: url("in-production.png"); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain; 
-    width: 100%;   
-    height: 100%;  
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+      
+      
+.media-frame {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(135deg, #30291e, ...);
+  position: relative;
 }
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+            .featured-content {
+        min-width: 0;
+      }
+      .laurels {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-bottom: var(--space-md);
+      }
+      .laurel {
+        border: 1px solid var(--color-gold);
+        color: var(--color-gold);
+        padding: 0.4rem 0.65rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-radius: var(--radius);
       }
       h3 {
         font-size: clamp(1.45rem, 3vw, 2.3rem);
@@ -593,11 +602,11 @@ section:has(.hero-container-flex),
         </a>
 
         <nav class="nav-links" aria-label="Main navigation">
-            <a href="#support">Mission</a>
+            <a href="#mission">Mission</a>
             <a href="#projects">Projects</a>
-            <a href="#board">our team</a>
+            <a href="#impact">Impact</a>
             <a href="#support">Support Us</a>
-            
+            <a href="#search" style="margin-left: 10px;">🔍</a>
         </nav>
     </div>
 </header>
@@ -642,7 +651,7 @@ section:has(.hero-container-flex),
         <div class="featured-content">
               <div class="laurels">
                 <span class="laurel">Silver Telly Award</span
-                ><span class="laurel">Winner Best Message-Driven Film</span>
+                ><span class="laurel">Official Selection</span>
               </div>
               <h3>Mama Vlada</h3>
               <p class="project-copy">
@@ -652,7 +661,7 @@ section:has(.hero-container-flex),
               </p>
               <div class="project-actions">
                 <a class="button" href="https://youtu.be/B5BIJBBPUZM?si=xvUTflSDjURVakVw" target="_blank">Watch Trailer</a>
-                <a class="button button-outline" href="Mama_Vlada_Press_Kit.pdf">Download press / media kit (PDF)</a>
+                <a class="button button-outline" href="#">Download press / media kit (PDF)</a>
               </div>
             </div>
           </article>
@@ -660,7 +669,7 @@ section:has(.hero-container-flex),
    <img class="media-frame" src="Unextinguished.png" alt="Mama Vlada film frame" style="width: 100%;">
         <div class="featured-content">
               <div class="laurels">
-              <span class="laurel">Winner Best Message-Driven Film</span>
+              <span class="laurel">Official Selection</span>
               </div>
         <h3>Unextinguished</h3>
         <p class="project-copy">
@@ -677,11 +686,7 @@ section:has(.hero-container-flex),
     </div>
 </article>
             <article class="featured" style="margin-bottom: 50px; margin-top: 40px;">
-              <div
-                class="media-frame"
-                role="img"
-                aria-label="Placeholder for Law in Your Heart documentary still"
-              ></div>
+              <img class="media-frame" src="in-production.png" alt="Law in Your Heart" style="margin-bottom: 50px; margin...">
               <div class="featured-content">
     <h3>Law in Your Heart</h3>
     <p class="project-copy">
@@ -754,15 +759,18 @@ section:has(.hero-container-flex),
             <p class="eyebrow">A story needs witnesses</p>
             <h2>Support our mission &amp; transparency</h2>
             <p>
-              Your support directly powers our work. At Graypels Production, we are dedicated to bridging cultures and enriching communities through documentary filmmaking, music, and performing arts.
-              <p>
-              As a 501(c)(3) nonprofit organization, we foster international cultural exchange by creating impactful media projects, presenting dynamic musical performances, and hosting community cultural festivals.
+              Your support helps independent films reach the audiences who need them, preserves
+              testimony for future generations, and gives cultural initiatives the practical
+              resources to grow. Whether you make a one-time contribution or join us monthly, you
+              become part of a living archive of empathy and action.
             </p>
             <p>
-              By contributing today, you help us support emerging creators, empower local arts initiatives, and keep meaningful cultural storytelling accessible to all.
+              We welcome foundations, donors, and cultural partners who believe that art can move
+              public understanding forward. For partnership conversations, contact our team
+              directly.
             </p>
             <div class="hero-actions">
-              <a class="button" href="https://www.zeffy.com/en-US/donation-form/support-our-mission-270">Make a donation</a
+              <a class="button" href="#">Make a donation</a
               ><a class="button button-outline" href="mailto:graypelsproduction@gmail.com"
                 >Email partnerships</a
               >
@@ -772,8 +780,8 @@ section:has(.hero-container-flex),
             <h3>Ways to stand with us</h3>
             <p>Choose the form of support that fits your relationship with the work.</p>
             <div class="support-links">
-              <a class="support-link" href="https://www.zeffy.com/en-US/donation-form/support-our-mission-270"><span>One-time donation</span><span>→</span></a
-              ><a class="support-link" href="https://www.zeffy.com/en-US/donation-form/support-our-mission-270"><span>Monthly support</span><span>→</span></a
+              <a class="support-link" href="#"><span>One-time donation</span><span>→</span></a
+              ><a class="support-link" href="#"><span>Monthly support</span><span>→</span></a
               ><a class="support-link" href="#"><span>Press / media kit</span><span>PDF →</span></a>
             </div>
           </aside>
@@ -782,8 +790,10 @@ section:has(.hero-container-flex),
     </main>
     <footer>
       <div class="wide-container footer-inner">
-        <span>© 2026 Graypels Production Inc. is a registered 501(c)(3) nonprofit organization organized exclusively for charitable, educational, and artistic purposes. Contributions are tax-deductible to the extent allowed by law.</span></span
-        <p style="margin: -5px 0 0 0;"><a href="mailto:graypelsproduction@gmail.com">graypelsproduction@gmail.com</a></p>
+        <span>© 2025 Graypels Production Inc.</span><span>Film · Music · Human rights</span
+        ><a href="mailto:graypelsproduction@gmail.com"
+          >graypelsproduction@gmail.com</a
+        >
       </div>
     </footer>
     <script>
